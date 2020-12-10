@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Services\Post\Contracts\CreateInterface;
+use App\Services\Post\Contracts\ImportInterface;
 use App\Services\Post\CreateService;
+use App\Services\Post\ImportService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CreateInterface::class, CreateService::class);
+        $this->app->bind(ImportInterface::class, ImportService::class);
     }
 
     /**
