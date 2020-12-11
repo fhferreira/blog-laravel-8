@@ -22,7 +22,9 @@ class CreateTablePost extends Migration
 
             $table->string('title', 100);
             $table->text('description');
-            $table->dateTime('publication_date');
+            $table->timestamp('publication_date')
+                ->default(DB::raw('CURRENT_TIMESTAMP'));
+
 
             $table->timestamps();
             $table->softDeletes();

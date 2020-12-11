@@ -9,6 +9,6 @@ class Create extends BaseController
     public function __invoke()
     {
         $title = "Create Post";
-        return view('create');
+        return view('post.create');
     }
 }

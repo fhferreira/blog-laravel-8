@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public $guarded = ['id'];
+    protected $guarded = ['id'];
 
     public function author()
     {

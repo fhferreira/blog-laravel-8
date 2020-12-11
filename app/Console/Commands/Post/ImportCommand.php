@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Post;
 
+use App\Jobs\Post\ImportPosts;
 use App\Services\Post\Contracts\ImportInterface;
 use Illuminate\Console\Command;
 
@@ -41,6 +42,6 @@ class ImportCommand extends Command
      */
     public function handle()
     {
-        $this->importService->import();
+        dispatch_now(new ImportPosts($this->importService));
     }
 }

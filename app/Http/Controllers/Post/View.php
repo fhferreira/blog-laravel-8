@@ -16,10 +16,10 @@ class View extends BaseController
 
     public function __invoke($id)
     {
-        return Cache::rememberForever('view-post-' . $id, function () use ($id) {
-            $post = $this->postModel->findOrFail($id);
-            $title = $post->title;
-            return view('post.view', compact('title', 'post'))->render();
-        });
+        $post = $this->postModel->with('author')->findOrFail($id);
+
+        $title = $post->title;
+
+        return view('post.view', compact('title', 'post'));
     }
 }
