@@ -1,4 +1,4 @@
-<div class="max-w-2xl mx-auto mb-10">
+<div class="max-w-1xl mx-auto mb-10">
     <span class="text-gray-600 text-sm font-light">
         {{ $post->created_at->diffForHumans() }}
     </span>
@@ -7,12 +7,10 @@
         <h2>{{ $post->title }}</h2>
     </a>
     <p class="text-gray-600 mt-2">
-        {{ $post->description }}
+        {!! nl2br($post->description) !!}
     </p>
     <div class="mt-4 hover:underline">
-        <a href="/post/{{ $post->id }}" class="inline-flex items-center">
-            <h5 title="Author" class="text-gray-800 font-medium ml-3 capitalize">{{ $post->author->name }}</h5>
-        </a>
+        <h5 title="Author" class="text-gray-800 font-medium ml-3 capitalize"><small class="italic">Author:</small> {{ $post->author->name }}</h5>
     </div>
 </div>
 <hr style="color:#000;"/>

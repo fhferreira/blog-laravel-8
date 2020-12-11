@@ -10,6 +10,8 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $guarded = ['id'];
+
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');

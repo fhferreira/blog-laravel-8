@@ -17,8 +17,8 @@ class Store extends BaseController
 
     public function __invoke(StorePostRequest $request)
     {
+        $request->merge(['author_id' => auth()->user()->id]);
         $attributes = $request->all();
-        $attributes->merge(['author_id' => auth()->user()->id]);
 
         $post = $this->service->create($attributes);
 

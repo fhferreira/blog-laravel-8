@@ -9,11 +9,14 @@ class Index extends BaseController
 {
     public function __invoke(Post $postModel)
     {
-        $posts = $postModel->with('author')->orderBy('created_at','desc')
-            ->paginate(2);
+        $posts = $postModel->with('author')
+            ->orderBy('created_at','desc')
+            ->paginate(5);
 
         $title = 'Big Journal Posts';
 
-        return view('post.index', compact('title', 'posts'));
+        $header_span = 'All latest posts';
+
+        return view('post.index', compact('title', 'posts', 'header_span'));
     }
 }

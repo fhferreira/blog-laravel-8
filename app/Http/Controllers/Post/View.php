@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller as BaseController;
 use App\Models\Post;
+use Cache;
 
 class View extends BaseController
 {
-    public function __invoke($id, Post $postModel)
+    private $postModel;
+    public function __construct(Post $postModel)
     {
-        $post = $postModel->findOrFail($id);
+        $this->postModel = $postModel;
+    }
+
+    public function __invoke($id)
+    {
+        $post = $this->postModel->with('author')->findOrFail($id);
 
         $title = $post->title;
 
